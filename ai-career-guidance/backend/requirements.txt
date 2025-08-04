@@ -1,4 +1,4 @@
-Flask
-Flask-Cors
-google-generativeai
+flask
+flask-cors
 python-dotenv
+google-generativeai
