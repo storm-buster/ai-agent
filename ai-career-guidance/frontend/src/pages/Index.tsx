@@ -55,21 +55,23 @@ const Index = () => {
       <Header />
       
       <main className="py-12 px-6">
-        {!results ? (
-          <UserForm onSubmit={handleFormSubmit} isLoading={isLoading} />
-        ) : (
-          <div className="space-y-8">
-            <AIResults results={results} />
-            <div className="text-center">
-              <button
-                onClick={handleNewAnalysis}
-                className="text-primary hover:underline font-medium"
-              >
-                ← Start New Analysis
-              </button>
+        <div className="animate-fade-in">
+          {!results ? (
+            <UserForm onSubmit={handleFormSubmit} isLoading={isLoading} />
+          ) : (
+            <div className="space-y-8 animate-fade-up">
+              <AIResults results={results} />
+              <div className="text-center">
+                <button
+                  onClick={handleNewAnalysis}
+                  className="text-primary hover:underline font-medium"
+                >
+                  ← Start New Analysis
+                </button>
+              </div>
             </div>
-          </div>
-        )}
+          )}
+        </div>
       </main>
       
       <Footer />

@@ -4,7 +4,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
-import { Loader2, Target } from "lucide-react";
+import { Loader2, Target, Briefcase, GraduationCap, Star, Lightbulb, Code, School } from "lucide-react";
 import SkillsInput from "./SkillsInput";
 import InterestsSelect from "./InterestsSelect";
 import { useToast } from "@/hooks/use-toast";
@@ -75,7 +75,7 @@ const UserForm = ({ onSubmit, isLoading }: UserFormProps) => {
   };
 
   return (
-    <Card className="w-full max-w-2xl mx-auto shadow-card">
+    <Card className="w-full max-w-2xl mx-auto shadow-card animate-fade-up">
       <CardHeader className="text-center">
         <CardTitle className="flex items-center justify-center gap-2 text-2xl">
           <Target className="w-6 h-6 text-primary" />
@@ -84,18 +84,23 @@ const UserForm = ({ onSubmit, isLoading }: UserFormProps) => {
       </CardHeader>
       <CardContent>
         <form onSubmit={handleSubmit} className="space-y-6">
-          <SkillsInput
-            skills={formData.skills}
-            onSkillsChange={(skills) => setFormData({ ...formData, skills })}
-          />
+          <div className="animate-fade-up" style={{ animationDelay: '0.1s' }}>
+            <SkillsInput
+              skills={formData.skills}
+              onSkillsChange={(skills) => setFormData({ ...formData, skills })}
+            />
+          </div>
 
-          <InterestsSelect
-            interests={formData.interests}
-            onInterestsChange={(interests) => setFormData({ ...formData, interests })}
-          />
+          <div className="animate-fade-up" style={{ animationDelay: '0.2s' }}>
+            <InterestsSelect
+              interests={formData.interests}
+              onInterestsChange={(interests) => setFormData({ ...formData, interests })}
+            />
+          </div>
 
-          <div className="space-y-3">
-            <label className="text-sm font-medium text-foreground">
+          <div className="space-y-3 animate-fade-up" style={{ animationDelay: '0.3s' }}>
+            <label className="text-sm font-medium text-foreground flex items-center gap-2">
+              <GraduationCap className="w-4 h-4" />
               Your education level
             </label>
             <Select value={formData.education} onValueChange={(education) => setFormData({ ...formData, education })}>
@@ -113,31 +118,36 @@ const UserForm = ({ onSubmit, isLoading }: UserFormProps) => {
             </Select>
           </div>
 
-          <div className="space-y-3">
-            <label className="text-sm font-medium text-foreground">
+          <div className="space-y-3 animate-fade-up" style={{ animationDelay: '0.4s' }}>
+            <label className="text-sm font-medium text-foreground flex items-center gap-2">
+              <Star className="w-4 h-4" />
               What's your current goal?
             </label>
             <RadioGroup 
               value={formData.goal} 
               onValueChange={(goal) => setFormData({ ...formData, goal })}
-              className="grid grid-cols-2 gap-4"
+              className="grid grid-cols-2 lg:grid-cols-4 gap-4"
             >
-              <div className="flex items-center space-x-2">
-                <RadioGroupItem value="internship" id="internship" />
-                <Label htmlFor="internship">Internship</Label>
-              </div>
-              <div className="flex items-center space-x-2">
-                <RadioGroupItem value="job" id="job" />
-                <Label htmlFor="job">Job</Label>
-              </div>
-              <div className="flex items-center space-x-2">
-                <RadioGroupItem value="higher-studies" id="higher-studies" />
-                <Label htmlFor="higher-studies">Higher Studies</Label>
-              </div>
-              <div className="flex items-center space-x-2">
-                <RadioGroupItem value="not-sure" id="not-sure" />
-                <Label htmlFor="not-sure">Not Sure</Label>
-              </div>
+              <Label htmlFor="internship" className="cursor-pointer rounded-lg border-2 border-muted bg-popover p-4 hover:bg-accent hover:border-primary peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary transition-all">
+                <RadioGroupItem value="internship" id="internship" className="sr-only" />
+                <Briefcase className="w-6 h-6 mb-2 text-primary" />
+                <span className="font-semibold">Internship</span>
+              </Label>
+              <Label htmlFor="job" className="cursor-pointer rounded-lg border-2 border-muted bg-popover p-4 hover:bg-accent hover:border-primary peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary transition-all">
+                <RadioGroupItem value="job" id="job" className="sr-only" />
+                <Code className="w-6 h-6 mb-2 text-primary" />
+                <span className="font-semibold">Job</span>
+              </Label>
+              <Label htmlFor="higher-studies" className="cursor-pointer rounded-lg border-2 border-muted bg-popover p-4 hover:bg-accent hover:border-primary peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary transition-all">
+                <RadioGroupItem value="higher-studies" id="higher-studies" className="sr-only" />
+                <School className="w-6 h-6 mb-2 text-primary" />
+                <span className="font-semibold">Higher Studies</span>
+              </Label>
+              <Label htmlFor="not-sure" className="cursor-pointer rounded-lg border-2 border-muted bg-popover p-4 hover:bg-accent hover:border-primary peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary transition-all">
+                <RadioGroupItem value="not-sure" id="not-sure" className="sr-only" />
+                <Lightbulb className="w-6 h-6 mb-2 text-primary" />
+                <span className="font-semibold">Not Sure</span>
+              </Label>
             </RadioGroup>
           </div>
 
