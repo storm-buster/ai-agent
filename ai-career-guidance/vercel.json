@@ -1,8 +1,25 @@
 {
+  "builds": [
+    {
+      "src": "ai-career-guidance/backend/app.py",
+      "use": "@vercel/python"
+    },
+    {
+      "src": "ai-career-guidance/frontend/package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "ai-career-guidance/frontend/dist"
+      }
+    }
+  ],
   "rewrites": [
     {
       "source": "/api/(.*)",
       "destination": "/ai-career-guidance/backend/app.py"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
     }
   ]
 }
